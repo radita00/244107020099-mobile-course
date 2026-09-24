@@ -5,9 +5,9 @@ Repository portfolio pembelajaran mobile selama 16 minggu.
 
 ## Identitas
 
-Nama: Nama Anda
-NIM: NIM Anda
-Kelas: Kelas Anda
+Nama: Radita Yoga Anugrah
+NIM: 244107020099
+Kelas: 3E
 
 ## Daftar Minggu
 
