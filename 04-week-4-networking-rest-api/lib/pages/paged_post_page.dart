@@ -38,6 +38,12 @@ class _PagedPostPageState
   Widget build(BuildContext context) {
     final state = ref.watch(pagedPostsProvider);
     if (state.error != null && state.items.isEmpty) {
+        if (state.items.isEmpty && !state.hasMore && state.error == null) {
+          return Scaffold(
+            appBar: AppBar(title: const Text('Posts Paged')),
+            body: const Center(child: Text('Belum ada data dari server.')),
+          );
+        }
       return Scaffold(
         appBar: AppBar(title: const Text('Posts Paged')),
         body: Center(
