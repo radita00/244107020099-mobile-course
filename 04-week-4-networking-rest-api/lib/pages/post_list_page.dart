@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/providers.dart';
+import '../widgets/post_tile.dart';
 
 class PostListPage extends ConsumerWidget {
   const PostListPage({super.key});
@@ -50,19 +51,8 @@ class PostListPage extends ConsumerWidget {
                 ref.read(postListProvider.notifier).refresh(),
             child: ListView.builder(
               itemCount: posts.length,
-              itemBuilder: (context, index) {
-                final post = posts[index];
-                return ListTile(
-                  leading: CircleAvatar(
-                      child: Text(post.id.toString())),
-                  title: Text(post.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis),
-                  subtitle: Text(post.body,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis),
-                );
-              },
+              itemBuilder: (context, index) =>
+                  PostTile(post: posts[index]),
             ),
           );
         },
