@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import '../data/network_errors.dart';
 import '../data/providers.dart';
 import '../widgets/post_tile.dart';
-import '../data/network_errors.dart';
 
 class PostListPage extends ConsumerWidget {
   const PostListPage({super.key});
@@ -15,6 +16,11 @@ class PostListPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Posts API'),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.view_list),
+            tooltip: 'Versi paged',
+            onPressed: () => context.push('/paged'),
+          ),
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () =>
@@ -52,8 +58,13 @@ class PostListPage extends ConsumerWidget {
                 ref.read(postListProvider.notifier).refresh(),
             child: ListView.builder(
               itemCount: posts.length,
-              itemBuilder: (context, index) =>
-                  PostTile(post: posts[index]),
+              itemBuilder: (context, index) {
+                final post = posts[index];
+                return PostTile(
+                  post: post,
+                  onTap: () => context.push('/post/${post.id}'),
+                );
+              },
             ),
           );
         },
