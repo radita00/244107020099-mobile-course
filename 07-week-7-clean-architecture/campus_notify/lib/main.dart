@@ -26,8 +26,7 @@ final router = GoRouter(
     GoRoute(path: AppRoutes.home, builder: (_, _) => const HomePage()),
     GoRoute(
       path: AppRoutes.announcementPattern,
-      builder: (_, s) =>
-          AnnouncementPage(id: s.pathParameters['id'] ?? ''),
+      builder: (_, s) => AnnouncementPage(id: s.pathParameters['id'] ?? ''),
     ),
   ],
 );
@@ -37,12 +36,14 @@ Future<void> main() async {
   await Firebase.initializeApp(); // wajib sebelum runApp
   registerBackgroundHandler();
   await initLocalNotifications();
-  runApp(UncontrolledProviderScope(
-    container: container,
-    child: MaterialApp.router(
-      title: 'Campus Notify',
-      theme: ThemeData(colorSchemeSeed: Colors.indigo, useMaterial3: true),
-      routerConfig: router,
+  runApp(
+    UncontrolledProviderScope(
+      container: container,
+      child: MaterialApp.router(
+        title: 'Campus Notify',
+        theme: ThemeData(colorSchemeSeed: Colors.indigo, useMaterial3: true),
+        routerConfig: router,
+      ),
     ),
-  ));
+  );
 }

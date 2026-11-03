@@ -37,19 +37,13 @@ class AuthNotifier extends AsyncNotifier<AuthSessionEntity?> {
     return result.session;
   }
 
-  Future<void> login({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> login({required String email, required String password}) async {
     state = const AsyncValue.loading();
     final useCase = ref.read(loginUseCaseProvider);
     final result = await useCase(email: email, password: password);
 
     if (result.failure != null) {
-      state = AsyncValue.error(
-        result.failure!.message,
-        StackTrace.current,
-      );
+      state = AsyncValue.error(result.failure!.message, StackTrace.current);
       return;
     }
     state = AsyncValue.data(result.session);
@@ -61,10 +55,7 @@ class AuthNotifier extends AsyncNotifier<AuthSessionEntity?> {
     final result = await useCase();
 
     if (result.failure != null) {
-      state = AsyncValue.error(
-        result.failure!.message,
-        StackTrace.current,
-      );
+      state = AsyncValue.error(result.failure!.message, StackTrace.current);
       return;
     }
     state = const AsyncValue.data(null);
