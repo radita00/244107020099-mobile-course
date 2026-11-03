@@ -31,7 +31,8 @@ class FakeAuthRepository implements AuthRepository {
   }
 
   @override
-  Future<({AuthSessionEntity? session, Failure? failure})> getSavedSession() async {
+  Future<({AuthSessionEntity? session, Failure? failure})>
+  getSavedSession() async {
     return (session: savedSession, failure: null);
   }
 
@@ -42,23 +43,31 @@ class FakeAuthRepository implements AuthRepository {
   }
 
   @override
-  Future<({String? token, Failure? failure})> refresh(String refreshToken) async {
+  Future<({String? token, Failure? failure})> refresh(
+    String refreshToken,
+  ) async {
     return (token: 'refreshed-token', failure: null);
   }
 }
 
 void main() {
   group('Auth Domain Use Cases', () {
-    test('LoginUseCase memvalidasi format email sebelum memanggil repository', () async {
-      final repo = FakeAuthRepository();
-      final useCase = LoginUseCase(repo);
+    test(
+      'LoginUseCase memvalidasi format email sebelum memanggil repository',
+      () async {
+        final repo = FakeAuthRepository();
+        final useCase = LoginUseCase(repo);
 
-      final result = await useCase(email: 'invalid-email', password: 'password123');
+        final result = await useCase(
+          email: 'invalid-email',
+          password: 'password123',
+        );
 
-      expect(result.session, isNull);
-      expect(result.failure, isA<ValidationFailure>());
-      expect(result.failure?.message, contains('Email tidak valid'));
-    });
+        expect(result.session, isNull);
+        expect(result.failure, isA<ValidationFailure>());
+        expect(result.failure?.message, contains('Email tidak valid'));
+      },
+    );
 
     test('LoginUseCase memvalidasi panjang minimal kata sandi', () async {
       final repo = FakeAuthRepository();
@@ -75,7 +84,10 @@ void main() {
       final repo = FakeAuthRepository();
       final useCase = LoginUseCase(repo);
 
-      final result = await useCase(email: 'mhs@campus.ac.id', password: 'password123');
+      final result = await useCase(
+        email: 'mhs@campus.ac.id',
+        password: 'password123',
+      );
 
       expect(result.failure, isNull);
       expect(result.session, isNotNull);
@@ -84,7 +96,10 @@ void main() {
 
     test('LogoutUseCase berhasil membersihkan sesi', () async {
       final repo = FakeAuthRepository(
-        savedSession: const AuthSessionEntity(accessToken: 'a', refreshToken: 'r'),
+        savedSession: const AuthSessionEntity(
+          accessToken: 'a',
+          refreshToken: 'r',
+        ),
       );
       final useCase = LogoutUseCase(repo);
 

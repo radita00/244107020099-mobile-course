@@ -7,9 +7,8 @@ import '../models/auth_session_model.dart';
 /// Implementasi konkret dari [AuthRepository].
 /// Bertanggung jawab atas komunikasi ke penyimpanan lokal (TokenStore) dan simulasi API backend.
 class AuthRepositoryImpl implements AuthRepository {
-  AuthRepositoryImpl({
-    TokenStore? tokenStore,
-  }) : _tokenStore = tokenStore ?? TokenStore();
+  AuthRepositoryImpl({TokenStore? tokenStore})
+    : _tokenStore = tokenStore ?? TokenStore();
 
   final TokenStore _tokenStore;
 
@@ -50,13 +49,20 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<({AuthSessionEntity? session, Failure? failure})> getSavedSession() async {
+  Future<({AuthSessionEntity? session, Failure? failure})>
+  getSavedSession() async {
     try {
       final access = await _tokenStore.readAccess();
       final refresh = await _tokenStore.readRefresh();
 
-      if (access != null && access.isNotEmpty && refresh != null && refresh.isNotEmpty) {
-        final model = AuthSessionModel(accessToken: access, refreshToken: refresh);
+      if (access != null &&
+          access.isNotEmpty &&
+          refresh != null &&
+          refresh.isNotEmpty) {
+        final model = AuthSessionModel(
+          accessToken: access,
+          refreshToken: refresh,
+        );
         return (session: model.toEntity(), failure: null);
       }
       return (session: null, failure: null);
@@ -69,16 +75,21 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<({String? token, Failure? failure})> refresh(String refreshToken) async {
+  Future<({String? token, Failure? failure})> refresh(
+    String refreshToken,
+  ) async {
     try {
       await Future.delayed(const Duration(milliseconds: 300));
       if (refreshToken.isEmpty) {
         return (
           token: null,
-          failure: const AuthFailure('Refresh token tidak ditemukan atau sudah kadaluwarsa.'),
+          failure: const AuthFailure(
+            'Refresh token tidak ditemukan atau sudah kadaluwarsa.',
+          ),
         );
       }
-      final newAccess = 'mock-access-renewed-${DateTime.now().millisecondsSinceEpoch}';
+      final newAccess =
+          'mock-access-renewed-${DateTime.now().millisecondsSinceEpoch}';
       await _tokenStore.save(access: newAccess, refresh: refreshToken);
       return (token: newAccess, failure: null);
     } catch (e) {

@@ -24,18 +24,18 @@ class AnnouncementModel extends Announcement {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'title': title,
-        'body': body,
-        'author': author,
-        'created_at': createdAt?.toIso8601String(),
-      };
+    'id': id,
+    'title': title,
+    'body': body,
+    'author': author,
+    'created_at': createdAt?.toIso8601String(),
+  };
 
   Announcement toEntity() => Announcement(
-        id: id,
-        title: title,
-        body: body,
-        author: author,
-        createdAt: createdAt,
-      );
+    id: id,
+    title: title,
+    body: body,
+    author: author,
+    createdAt: createdAt,
+  );
 }

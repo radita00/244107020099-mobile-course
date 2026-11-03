@@ -7,5 +7,7 @@ abstract interface class AnnouncementRepository {
   Future<({List<Announcement> items, Failure? failure})> getAnnouncements();
 
   /// Mengambil detail pengumuman berdasarkan ID.
-  Future<({Announcement? item, Failure? failure})> getAnnouncementById(String id);
+  Future<({Announcement? item, Failure? failure})> getAnnouncementById(
+    String id,
+  );
 }

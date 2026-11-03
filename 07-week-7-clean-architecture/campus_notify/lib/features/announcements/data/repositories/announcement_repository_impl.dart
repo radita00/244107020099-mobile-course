@@ -5,9 +5,8 @@ import '../models/announcement_model.dart';
 
 /// Implementasi konkret dari [AnnouncementRepository].
 class AnnouncementRepositoryImpl implements AnnouncementRepository {
-  AnnouncementRepositoryImpl({
-    Map<String, Map<String, dynamic>>? initialData,
-  }) : _data = initialData ?? _defaultData;
+  AnnouncementRepositoryImpl({Map<String, Map<String, dynamic>>? initialData})
+    : _data = initialData ?? _defaultData;
 
   final Map<String, Map<String, dynamic>> _data;
 
@@ -43,7 +42,8 @@ class AnnouncementRepositoryImpl implements AnnouncementRepository {
   };
 
   @override
-  Future<({List<Announcement> items, Failure? failure})> getAnnouncements() async {
+  Future<({List<Announcement> items, Failure? failure})>
+  getAnnouncements() async {
     try {
       await Future.delayed(const Duration(milliseconds: 300));
       final items = _data.values
@@ -59,7 +59,9 @@ class AnnouncementRepositoryImpl implements AnnouncementRepository {
   }
 
   @override
-  Future<({Announcement? item, Failure? failure})> getAnnouncementById(String id) async {
+  Future<({Announcement? item, Failure? failure})> getAnnouncementById(
+    String id,
+  ) async {
     try {
       await Future.delayed(const Duration(milliseconds: 200));
       final raw = _data[id];

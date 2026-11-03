@@ -67,10 +67,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             FilledButton(
               onPressed: auth.isLoading
                   ? null
-                  : () => ref.read(authStateProvider.notifier).login(
-                        email: _email.text.trim(),
-                        password: _password.text,
-                      ),
+                  : () => ref
+                        .read(authStateProvider.notifier)
+                        .login(
+                          email: _email.text.trim(),
+                          password: _password.text,
+                        ),
               child: auth.isLoading
                   ? const SizedBox(
                       height: 18,

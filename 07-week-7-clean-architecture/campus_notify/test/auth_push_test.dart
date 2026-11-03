@@ -46,7 +46,10 @@ void main() {
       ),
     );
 
-    expect(apiErrorMessage(error), 'Sesi Anda berakhir. Silakan masuk kembali.');
+    expect(
+      apiErrorMessage(error),
+      'Sesi Anda berakhir. Silakan masuk kembali.',
+    );
   });
 
   test('timeout dipetakan ke pesan koneksi terlalu lama', () {
