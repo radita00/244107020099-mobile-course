@@ -97,6 +97,145 @@ grep -r "import.*data" lib/domain          # ✅ 0 violations
 
 ---
 
+## 📊 Status Paruh Semester (Week 1-7)
+
+### ✅ Fitur yang Sudah Diselesaikan
+
+**Week 1-2:** Foundation
+- Flutter environment setup + Dart basics
+- Declarative UI & responsive design
+- Material 3 components
+
+**Week 3-4:** Core Features
+- Navigation (GoRouter)
+- State management (Riverpod)
+- REST API integration (Dio)
+- Error handling & loading states
+
+**Week 5-6:** Data & Auth
+- Local storage (SQLite)
+- Offline-first architecture
+- Authentication flow
+- Secure storage (flutter_secure_storage)
+- Firebase Cloud Messaging (FCM)
+
+**Week 7:** Clean Architecture Refactor
+- Feature-first structure (presentation → domain ← data)
+- SOLID principles
+- Dependency injection
+- Repository pattern
+- 20 unit tests (100% passed)
+
+---
+
+## 🏗️ Stack Teknologi
+
+**Framework & Language:**
+- Flutter 3.47.7
+- Dart 3.13.5
+
+**State Management:**
+- Riverpod 3.4.3
+
+**Navigation:**
+- GoRouter 18.0.2
+
+**Networking:**
+- Dio 5.11.1 (HTTP client)
+- REST API integration
+
+**Storage:**
+- SQLite (sqflite)
+- flutter_secure_storage 11.2.0
+
+**Firebase:**
+- firebase_core 4.15.0
+- firebase_messaging 16.7.0
+- flutter_local_notifications 22.3.1
+
+**Testing:**
+- flutter_test (20 unit tests)
+
+**CI/CD:**
+- GitHub Actions
+- Flutter analyze + dart format + flutter test
+
+---
+
+## 🗺️ Peta Issue & Pull Request
+
+### Pull Requests
+| # | Title | Status | Commits | Changes |
+|---|-------|--------|---------|---------|
+| #1 | feat/week8-review-docs → develop | ✅ Merged | 11 | +950/-438 |
+
+### Issues
+Belum ada issue tracking system (akan diimplementasikan di week 9+)
+
+**Action Items:**
+- [ ] Setup GitHub Issues untuk feature tracking
+- [ ] Buat issue template
+- [ ] Link PR ke issue dengan "Closes #N"
+
+---
+
+## 🚀 Cara Menjalankan Project
+
+### Prerequisites
+- Flutter SDK 3.47.x atau lebih baru
+- Dart SDK 3.13.x atau lebih baru
+- Android Studio / Xcode (untuk emulator)
+- Git
+
+### Setup & Run
+
+```bash
+# 1. Clone repository
+git clone https://github.com/radita00/244107020099-mobile-course.git
+cd 244107020099-mobile-course
+
+# 2. Checkout develop branch
+git checkout develop
+
+# 3. Masuk ke project week 7 (production-ready)
+cd 07-week-7-clean-architecture/campus_notify
+
+# 4. Install dependencies
+flutter pub get
+
+# 5. Verifikasi setup
+flutter doctor
+
+# 6. Run tests
+flutter test
+
+# 7. Run app
+flutter run
+```
+
+### Struktur Repository
+
+```
+244107020099-mobile-course/
+├── 01-week-1-mobile-development-ecosystem-flutter-refresh/
+├── 02-week-2-declarative-ui-responsive-design/
+├── 03-week-3-navigation-state-management/
+├── 04-week-4-networking-rest-api/
+├── 05-week-5-local-storage-offline-first/
+├── 06-week-6-authentication-security-fcm/
+├── 07-week-7-clean-architecture/          ← Production-ready project
+│   └── campus_notify/
+├── 08-week-8-mid-project-review/          ← You are here
+│   ├── docs/
+│   │   ├── review-checklist.md
+│   │   └── ai-review-vs-keputusan.md
+│   ├── screenshots/
+│   └── README.md
+└── .github/workflows/ci.yml
+```
+
+---
+
 ## 📊 Test Coverage
 
 **Total:** 20 tests, 100% passed
