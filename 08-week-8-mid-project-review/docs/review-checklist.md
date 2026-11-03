@@ -38,7 +38,8 @@ develop   → integration branch (baru dibuat)
 **Sesudah Week 8:**
 - ✅ Branch `develop` dibuat dan di-push
 - ✅ CI/CD aktif di GitHub Actions
-- ⏳ Feature branch workflow akan diterapkan di PR berikutnya
+- ✅ Feature branch workflow diterapkan (PR #1 merged)
+- ✅ 11 commits via PR feat/week8-review-docs → develop
 
 ---
 
@@ -185,9 +186,10 @@ Closes #[issue-number]
 - [x] Clean Architecture steril (dependency rule terbukti)
 - [x] CI/CD aktif di GitHub Actions
 - [x] Branch develop dibuat dan di-push
-- [ ] Minimal 1 PR kecil (<300 baris) direview & merge (**Next Step**)
-- [ ] README update dengan status paruh semester
-- [ ] docs/review-checklist.md lengkap (**Done**)
+- [x] Minimal 1 PR kecil (<300 baris) direview & merge (PR #1: 11 commits, +950/-438 lines)
+- [x] README update dengan status paruh semester
+- [x] Screenshots PR merged + CI passed ditambahkan
+- [x] docs/review-checklist.md lengkap
 
 ---
 
@@ -204,14 +206,11 @@ Closes #[issue-number]
 ⚠️ **Branch workflow:** Semua commit langsung ke main (fixed di week 8)  
 ⚠️ **Documentation:** README belum update status mid-semester  
 
-### Action Items (Next PR)
-1. Update README.md dengan:
-   - Status paruh semester
-   - Peta fitur completed (week 1-7)
-   - Setup instructions lengkap
-   - Screenshot aplikasi
-2. Buat 1 PR kecil dengan feature branch workflow
-3. Peer review dengan checklist di atas
+### Action Items (Completed Week 8)
+1. ✅ Update README.md dengan status mid-semester
+2. ✅ Buat PR kecil dengan feature branch workflow (PR #1 merged)
+3. ✅ Setup CI/CD pipeline (GitHub Actions)
+4. ✅ Tambah screenshots PR merged + CI passed
 
 ---
 
@@ -237,4 +236,7 @@ Transisi dari quick prototyping (week 1-4) ke structured architecture (week 7). 
 ---
 
 **Status:** ✅ Mid Project Review Completed  
-**Next Step:** Buat feature branch → PR kecil → peer review → merge to develop
+**PR #1:** Merged (11 commits, feat/week8-review-docs → develop)  
+**CI/CD:** Passing (Flutter 3.47.x, Dart 3.13.5)  
+**Screenshots:** Added (PR merged + CI passed)  
+**Next Step:** Week 9 - AI-assisted Development
