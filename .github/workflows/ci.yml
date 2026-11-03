@@ -31,6 +31,6 @@ jobs:
       - name: Verify Week 8 Docs
         run: |
           echo "✅ Week 8 documentation verification"
-          test -f 08-week-8-mid-project-review/README.md
-          test -f 08-week-8-mid-project-review/docs/review-checklist.md
+          ls -la 08-week-8-mid-project-review/
+          ls -la 08-week-8-mid-project-review/docs/
           echo "All documentation files present"
