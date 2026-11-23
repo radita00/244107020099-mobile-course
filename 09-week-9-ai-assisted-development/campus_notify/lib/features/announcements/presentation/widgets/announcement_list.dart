@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../routes.dart';
-import '../providers/announcements_providers.dart';
+import '../providers/search_providers.dart';
 import 'empty_announcement_state.dart';
 
 /// Daftar pengumuman beserta status loading, error, dan empty.

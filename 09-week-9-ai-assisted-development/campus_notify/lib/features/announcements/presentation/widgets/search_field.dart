@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../providers/announcements_providers.dart';
+import '../providers/search_providers.dart';
 
 /// Kotak pencarian judul pengumuman.
 ///
