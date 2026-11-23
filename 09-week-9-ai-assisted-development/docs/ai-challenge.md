@@ -101,7 +101,7 @@ jaringan atau database — ini yang membuktikan wiring-nya, bukan cuma use case-
 
 ## 5. Alasan menolak temuan 3 (debounce)
 
-Saya tolak, bukan karena malas, tapi karena untuk kasus ini tidak menguntungkan:
+Alasan penolakan bersifat teknis:
 
 1. **Beban kerjanya tidak nyata.** Data ada di memori, 4 pengumuman, filter
    `toLowerCase().contains()` atas seluruh daftar. Biayanya jauh di bawah satu
