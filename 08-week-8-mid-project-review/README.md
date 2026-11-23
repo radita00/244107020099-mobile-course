@@ -50,11 +50,12 @@ feat/*    → feature branches (akan dipakai di PR berikutnya)
 trigger: pull_request → [develop, main]
 steps:
   1. Checkout code
-  2. Setup Flutter 3.24.x
+  2. Setup Flutter 3.47.x
   3. flutter pub get
   4. flutter analyze    ← 0 issues required
   5. dart format check  ← clean format required
   6. flutter test       ← all tests must pass
+  7. verify docs exist  ← test -f gate
 ```
 
 **Status:** ✅ Aktif di develop branch
@@ -164,18 +165,25 @@ grep -r "import.*data" lib/domain          # ✅ 0 violations
 
 ## 🗺️ Peta Issue & Pull Request
 
-### Pull Requests
-| # | Title | Status | Commits | Changes |
-|---|-------|--------|---------|---------|
-| #1 | feat/week8-review-docs → develop | ✅ Merged | 11 | +950/-438 |
-
 ### Issues
-Belum ada issue tracking system (akan diimplementasikan di week 9+)
+| # | Judul | Status |
+|---|-------|--------|
+| #2 | Audit gap Week 8: refleksi jobsheet, PR template, CI docs gate | ⏳ Pending (dibuat manual di GitHub) |
 
-**Action Items:**
-- [ ] Setup GitHub Issues untuk feature tracking
-- [ ] Buat issue template
-- [ ] Link PR ke issue dengan "Closes #N"
+### Pull Requests
+| # | Title | Status | Commits | Perubahan |
+|---|-------|--------|---------|-----------|
+| #1 | feat/week8-review-docs → develop | ✅ Merged | 11 | +950 / -438 |
+| #3 | fix/week8-audit-gaps → develop | ⏳ Pending | 3 | +254 / -81 |
+
+> **Catatan:** baris ⏳ diubah menjadi ✅ setelah Issue dibuat dan PR di-merge. Nomor `#2` dan `#3` adalah nomor urut berikutnya di repo ini; sesuaikan bila berbeda.
+
+### Backlog (dari self review)
+| Item | Sumber | Target |
+|------|--------|--------|
+| Hapus dead code `lib/data/api_client.dart` + `api_errors.dart` (69 baris) | Self review A1 | Issue terpisah |
+| Tambah widget test fitur notes + empty state | Self review T1 | Week 9 |
+| Rename screenshot week 7 → `before-*` / `after-*` | Self review R1 | Action item |
 
 ---
 
@@ -256,9 +264,16 @@ flutter run
 ```
 08-week-8-mid-project-review/
 ├── docs/
-│   └── review-checklist.md  ← Audit lengkap + checklist review
-├── README.md                 ← Overview week 8
-└── screenshots/              ← (akan ditambahkan di PR)
+│   ├── review-checklist.md      ← Audit commit, static analysis, self review, refleksi
+│   └── ai-review-vs-keputusan.md ← Prompt AI + tabel usulan vs keputusan
+├── screenshots/
+│   ├── pr-merged.png            ← PR #1 merged
+│   └── ci-passed.png            ← CI pipeline hijau
+└── README.md                    ← Overview week 8
+
+.github/
+├── PULL_REQUEST_TEMPLATE.md     ← Template PR (root repo, otomatis muncul saat buka PR)
+└── workflows/ci.yml             ← CI: analyze + format + test + docs gate
 ```
 
 ---
@@ -266,15 +281,21 @@ flutter run
 ## 🎯 Deliverables
 
 - [x] Branch `develop` dibuat dan di-push
-- [x] CI/CD GitHub Actions setup
+- [x] CI/CD GitHub Actions setup (Flutter 3.47.x parity + docs gate)
 - [x] `docs/review-checklist.md` lengkap dengan:
   - Audit commit history (sebelum/sesudah)
   - Static analysis results
   - Architecture sterilitas verification
-  - PR template & review checklist
+  - PR template & review checklist reviewer
+  - **Hasil self review (5 temuan, 2 diperbaiki)**
   - Definition of Done
-  - Refleksi mid-semester
-- [ ] **Next:** 1 PR kecil dengan feature branch workflow + peer review
+  - **Refleksi 4 pertanyaan jobsheet + 3 refleksi tambahan**
+- [x] `docs/ai-review-vs-keputusan.md` (prompt, 5 temuan AI, tabel keputusan)
+- [x] PR #1 merged via feature branch workflow (11 commits)
+- [ ] Issue #2 dibuat di GitHub dan ditutup oleh PR #3 (`Closes #2`)
+- [x] Branch `fix/week8-audit-gaps` berisi 3 commit perbaikan gap audit
+- [x] Screenshots PR merged + CI passed
+- [x] `.github/PULL_REQUEST_TEMPLATE.md` di root repo (aktif untuk semua PR)
 
 ---
 
@@ -287,19 +308,21 @@ flutter run
 ✅ Zero static analysis issues  
 
 ### Improvements
-⚠️ Commit messages perlu konsisten conventional format  
-⚠️ Branch workflow baru diterapkan (sebelumnya langsung ke main)  
-⚠️ Documentation perlu update untuk mid-semester  
+⚠️ Commit messages perlu konsisten conventional format
+⚠️ Branch workflow baru diterapkan (sebelumnya langsung ke main)
+⚠️ **Peer review sejawat belum ada** — dikerjakan solo, diganti self review terdokumentasi (lihat `review-checklist.md` §6.3)
+⚠️ Dead code `lib/data/api_client.dart` + `api_errors.dart` (69 baris) belum dihapus
+⚠️ Widget test fitur notes belum ada
 
 ---
 
 ## 🚀 Next Steps (Week 9+)
 
-1. Buat feature branch untuk improvement kecil
-2. Open PR dengan template lengkap
-3. Peer review dengan checklist
-4. Merge ke develop setelah approve
-5. Lanjut ke **Week 9: AI-Assisted Development**
+1. **Week 9:** tambah fitur kecil dengan AI (search notes) + empty state + test
+2. Tambah widget test untuk fitur notes (menutup temuan T1)
+3. Hapus dead code `lib/data/api_client.dart` + `api_errors.dart` (menutup temuan A1)
+4. Rename screenshot week 7 jadi `before-*` / `after-*` (menutup temuan R1)
+5. Cari pasangan untuk peer review PR kode berikutnya
 
 ---
 
