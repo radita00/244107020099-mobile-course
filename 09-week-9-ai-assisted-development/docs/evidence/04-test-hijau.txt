@@ -1,0 +1,26 @@
+00:00 +0: loading D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/announcements_usecase_test.dart
+00:00 +0: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/announcements_usecase_test.dart: Announcements Domain Use Cases GetAnnouncements mengembalikan daftar pengumuman
+00:00 +1: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/announcements_usecase_test.dart: Announcements Domain Use Cases GetAnnouncementDetail mengembalikan item spesifik jika ditemukan
+00:00 +2: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/announcements_usecase_test.dart: Announcements Domain Use Cases GetAnnouncementDetail menolak ID kosong dengan ValidationFailure
+00:00 +3: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/auth_push_test.dart: routeFromMessage menangani route kosong dan tanpa slash
+00:00 +4: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/auth_push_test.dart: data payload membawa id pengumuman
+00:00 +5: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/auth_push_test.dart: provider auth membaca status login dari token
+00:00 +6: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/auth_push_test.dart: refresh gagal -> sesi dibersihkan (paksa login ulang)
+00:00 +7: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/auth_push_test.dart: 401 dipetakan ke pesan sesi berakhir
+00:00 +8: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/auth_push_test.dart: 401 dipetakan ke pesan sesi berakhir
+00:00 +9: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/auth_push_test.dart: 401 dipetakan ke pesan sesi berakhir
+00:00 +10: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/auth_usecase_test.dart: Auth Domain Use Cases LoginUseCase berhasil dan mengembalikan AuthSessionEntity
+00:00 +11: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/auth_push_test.dart: timeout dipetakan ke pesan koneksi terlalu lama
+00:00 +12: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/auth_usecase_test.dart: Auth Domain Use Cases LogoutUseCase berhasil membersihkan sesi
+00:00 +13: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/auth_push_test.dart: offline dipetakan ke pesan tidak dapat terhubung
+00:02 +14: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/format_test.dart: Core Formatting and Parsing formatDateTime memformat tanggal dan waktu dengan tepat
+00:02 +15: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/format_test.dart: Core Formatting and Parsing formatDateOnly memformat tanggal saja
+00:02 +16: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/format_test.dart: Core Formatting and Parsing parseAnnouncementId memvalidasi dan mem-parsing ID angka
+00:02 +17: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/get_notes_test.dart: GetNotes meneruskan daftar dari repository
+00:02 +18: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/get_notes_test.dart: GetNotes meneruskan failure tanpa melempar
+00:03 +19: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/search_announcements_test.dart: SearchAnnouncements query kosong mengembalikan seluruh pengumuman
+00:03 +20: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/search_announcements_test.dart: SearchAnnouncements query yang cocok mengembalikan pengumuman yang sesuai
+00:03 +21: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/search_announcements_test.dart: SearchAnnouncements pencarian tidak membedakan huruf besar dan kecil
+00:03 +22: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/search_announcements_test.dart: SearchAnnouncements query tanpa hasil mengembalikan daftar kosong
+00:26 +23: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/widget_test.dart: announcement page renders the selected announcement
+00:28 +24: All tests passed!

@@ -1,0 +1,19 @@
+=== BUKTI TEMUAN 1: apakah ada widget test untuk EmptyAnnouncementState? ===
+[jumlah: 0]
+
+=== BUKTI TEMUAN 2: apakah wiring provider diuji? ===
+[jumlah: 0]
+
+[ProviderContainer di test: 0]
+
+=== File test yang ada sekarang ===
+announcements_usecase_test.dart
+auth_push_test.dart
+auth_usecase_test.dart
+format_test.dart
+get_notes_test.dart
+search_announcements_test.dart
+widget_test.dart
+
+=== Yang SUDAH diuji: hanya use case murni ===
+4

@@ -1,0 +1,28 @@
+00:00 +0: loading D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/search_announcements_test.dart
+00:00 +0: SearchAnnouncements query kosong mengembalikan seluruh pengumuman
+00:00 +1: SearchAnnouncements query yang cocok mengembalikan pengumuman yang sesuai
+00:00 +1 -1: SearchAnnouncements query yang cocok mengembalikan pengumuman yang sesuai [E]
+  Expected: an object with length of <1>
+    Actual: []
+     Which: has length of <0>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\search_announcements_test.dart 26:7            main.<fn>.<fn>
+  
+00:00 +1 -1: SearchAnnouncements pencarian tidak membedakan huruf besar dan kecil
+00:00 +1 -2: SearchAnnouncements pencarian tidak membedakan huruf besar dan kecil [E]
+  Expected: an object with length of <1>
+    Actual: []
+     Which: has length of <0>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test\search_announcements_test.dart 31:7            main.<fn>.<fn>
+  
+00:00 +1 -2: SearchAnnouncements query tanpa hasil mengembalikan daftar kosong
+00:00 +2 -2: Some tests failed.
+
+Failing tests:
+  D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/search_announcements_test.dart: SearchAnnouncements pencarian tidak membedakan huruf besar dan kecil
+  D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/search_announcements_test.dart: SearchAnnouncements query yang cocok mengembalikan pengumuman yang sesuai

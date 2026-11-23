@@ -1,0 +1,36 @@
+=== 0. Hapus build/ (sisa Gradle yang bikin dart format crash) ===
+build/ dihapus
+
+=== 1. flutter analyze ===
+Analyzing campus_notify...                                      
+No issues found! (ran in 51.7s)
+
+=== 2. dart format --set-exit-if-changed . ===
+Formatted 48 files (0 changed) in 0.24 seconds.
+format exit=0
+
+=== 3. flutter test ===
+00:08 +22: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/search_announcements_test.dart: SearchAnnouncements query tanpa hasil mengembalikan daftar kosong
+00:17 +23: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/widget_test.dart: announcement page renders the selected announcement
+00:18 +24: All tests passed!
+
+=== 4. UKURAN FILE SETELAH REFACTOR ===
+  145 lib/features/announcements/presentation/pages/home_page.dart
+   65 lib/features/announcements/presentation/widgets/announcement_list.dart
+   40 lib/features/announcements/presentation/widgets/empty_announcement_state.dart
+   42 lib/features/announcements/presentation/widgets/push_status_panel.dart
+   44 lib/features/announcements/presentation/widgets/search_field.dart
+  336 total
+
+=== 5. WIDGET/PAGE TIDAK IMPORT DATA LAYER (harus 0) ===
+[jumlah: 0]
+
+=== 6. PANJANG TIAP METHOD DI home_page.dart (batas 40) ===
+   4 baris |   void initState() {
+   4 baris |   void dispose() {
+  36 baris |   Future<void> _initPush() async {
+   4 baris |   void _info(String msg) {
+   4 baris |   Future<void> _logout() async {
+   9 baris |   Future<void> _sendTestNotification() async {
+  17 baris |   PreferredSizeWidget _buildAppBar() {
+  25 baris |   Widget build(BuildContext context) {
