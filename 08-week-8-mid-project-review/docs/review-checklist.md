@@ -248,7 +248,8 @@ Closes #[issue-number]
 - [x] CI docs gate nyata (`test -f`, bukan `ls`)
 - [x] Branch develop dibuat dan di-push
 - [x] Minimal 1 PR kecil (<300 baris) direview & merge (PR #1: 11 commits, +950/-438 lines)
-- [ ] Issue #2 dibuat dan ditutup oleh PR #3 (`Closes #2`) — ⏳ menunggu aksi di GitHub
+- [x] PR #2 merged (gap audit: refleksi jobsheet, PR template root, CI docs gate)
+- [ ] Issue dibuat di GitHub (nomor berikutnya #3) — opsional, tidak memblokir Week 9
 - [x] `.github/PULL_REQUEST_TEMPLATE.md` di root repo (otomatis muncul saat buka PR)
 - [x] README update dengan status paruh semester + peta issue/PR
 - [x] Screenshots PR merged + CI passed ditambahkan
@@ -385,8 +386,8 @@ Transisi dari quick prototyping (week 1-4) ke structured architecture (week 7). 
 
 - **Status:** ✅ Mid Project Review Completed
 - **PR #1:** Merged (11 commits, feat/week8-review-docs → develop)
-- **PR #3:** ⏳ Pending (gap audit: refleksi jobsheet, PR template root, CI docs gate)
-- **Issue #2:** ⏳ Pending (dibuat manual di GitHub, ditutup oleh PR #3 via `Closes #2`)
+- **PR #2:** ✅ Merged (gap audit: refleksi jobsheet, PR template root, CI docs gate)
+- **Issue:** ⚠️ Belum dibuat (opsional; nomor berikutnya #3)
 - **CI/CD:** Passing (Flutter 3.47.x, Dart 3.13.5)
 - **Screenshots:** Added (PR merged + CI passed)
 - **Self Review:** 5 temuan (2 diperbaiki, 3 terjadwal)
