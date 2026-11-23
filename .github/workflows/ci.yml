@@ -30,7 +30,17 @@ jobs:
       
       - name: Verify Week 8 Docs
         run: |
-          echo "✅ Week 8 documentation verification"
-          ls -la 08-week-8-mid-project-review/
-          ls -la 08-week-8-mid-project-review/docs/
-          echo "All documentation files present"
+          echo "🔍 Verifikasi file dokumentasi Week 8..."
+          for f in \
+            08-week-8-mid-project-review/README.md \
+            08-week-8-mid-project-review/docs/review-checklist.md \
+            08-week-8-mid-project-review/docs/ai-review-vs-keputusan.md \
+            08-week-8-mid-project-review/screenshots/pr-merged.png \
+            08-week-8-mid-project-review/screenshots/ci-passed.png ; do
+            if [ ! -f "$f" ]; then
+              echo "❌ File wajib tidak ditemukan: $f"
+              exit 1
+            fi
+            echo "✅ $f"
+          done
+          echo "Semua dokumentasi Week 8 lengkap."
