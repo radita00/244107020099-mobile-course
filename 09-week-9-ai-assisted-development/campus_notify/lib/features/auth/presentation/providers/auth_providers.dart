@@ -1,18 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../data/repositories/auth_repository_impl.dart';
+import '../../di.dart';
 import '../../domain/entities/auth_session_entity.dart';
-import '../../domain/repositories/auth_repository.dart';
 import '../../domain/usecases/get_saved_session_usecase.dart';
 import '../../domain/usecases/login_usecase.dart';
 import '../../domain/usecases/logout_usecase.dart';
 
-// DI: Data layer
-final authRepositoryProvider = Provider<AuthRepository>((ref) {
-  return AuthRepositoryImpl();
-});
-
-// DI: Domain layer (use cases)
+// DI: Domain layer (use cases). Implementasi data layer ada di `di.dart`.
 final loginUseCaseProvider = Provider<LoginUseCase>((ref) {
   return LoginUseCase(ref.watch(authRepositoryProvider));
 });

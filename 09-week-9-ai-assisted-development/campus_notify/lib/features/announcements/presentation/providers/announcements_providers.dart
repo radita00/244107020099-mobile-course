@@ -1,17 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../data/repositories/announcement_repository_impl.dart';
+import '../../di.dart';
 import '../../domain/entities/announcement.dart';
-import '../../domain/repositories/announcement_repository.dart';
 import '../../domain/usecases/get_announcement_detail.dart';
 import '../../domain/usecases/get_announcements.dart';
 
-// DI: Data layer
-final announcementRepositoryProvider = Provider<AnnouncementRepository>((ref) {
-  return AnnouncementRepositoryImpl();
-});
-
-// DI: Domain layer (use cases)
+// DI: Domain layer (use cases). Implementasi data layer ada di `di.dart`.
 final getAnnouncementsUseCaseProvider = Provider<GetAnnouncements>((ref) {
   return GetAnnouncements(ref.watch(announcementRepositoryProvider));
 });

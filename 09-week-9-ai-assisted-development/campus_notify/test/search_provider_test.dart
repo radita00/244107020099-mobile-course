@@ -1,4 +1,5 @@
 import 'package:campus_notify/core/failures.dart';
+import 'package:campus_notify/features/announcements/di.dart';
 import 'package:campus_notify/features/announcements/domain/entities/announcement.dart';
 import 'package:campus_notify/features/announcements/domain/repositories/announcement_repository.dart';
 import 'package:campus_notify/features/announcements/presentation/providers/announcements_providers.dart';
