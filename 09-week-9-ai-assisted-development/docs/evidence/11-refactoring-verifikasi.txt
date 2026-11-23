@@ -1,0 +1,33 @@
+=== 1. Import lintas layer: presentation/ -> data/ ===
+[jumlah: 0]
+
+=== 2. Import data/ yang tersisa di seluruh fitur (harus hanya composition root) ===
+announcements/di.dart:3:import 'data/repositories/announcement_repository_impl.dart';
+auth/data/repositories/auth_repository_impl.dart:2:import '../../../../data/token_store.dart';
+auth/di.dart:3:import 'data/repositories/auth_repository_impl.dart';
+
+=== 3. Domain tidak boleh impor Flutter/framework ===
+[jumlah: 0]
+
+=== 4. flutter analyze ===
+Analyzing campus_notify...                                      
+No issues found! (ran in 8.6s)
+
+=== 5. dart format --set-exit-if-changed . ===
+exit=0
+Formatted 53 files (0 changed) in 0.25 seconds.
+
+=== 6. flutter test ===
+00:02 +29: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/empty_state_widget_test.dart: EmptyAnnouncementState query berisi spasi saja diperlakukan seperti kosong
+00:02 +30: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/widget_test.dart: announcement page renders the selected announcement
+00:04 +31: All tests passed!
+
+=== 7. Ukuran berkas fitur announcements (baris) ===
+  751 total
+  145 lib/features/announcements/presentation/pages/home_page.dart
+  103 lib/features/announcements/presentation/pages/announcement_page.dart
+   83 lib/features/announcements/data/repositories/announcement_repository_impl.dart
+   65 lib/features/announcements/presentation/widgets/announcement_list.dart
+   44 lib/features/announcements/presentation/widgets/search_field.dart
+
+=== 8. Method terpanjang di home_page.dart ===
