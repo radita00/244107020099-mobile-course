@@ -1,8 +1,8 @@
 # AI Log — Week 9: AI-Assisted Development
 
-> **Status pengerjaan:** Praktikum 1 (Prompt & Context Engineering) ✅ · Praktikum 2 (Generate & Verifikasi) ✅ · Praktikum 3 (Debug & Refactor) ✅
-> Hasil: 3 bug AI ditemukan & diperbaiki, `home_page.dart` 226 → 145 baris (semua method < 40 baris), `flutter analyze` bersih, 24/24 test hijau, 3 screenshot uji manual.
-> AI Challenge dan README **belum dikerjakan**.
+> **Status pengerjaan:** Praktikum 1 (Prompt & Context Engineering) ✅ · Praktikum 2 (Generate & Verifikasi) ✅ · Praktikum 3 (Debug & Refactor) ✅ · AI Challenge ✅
+> Hasil: 3 bug AI ditemukan & diperbaiki, `home_page.dart` 226 → 145 baris (semua method < 40 baris), `flutter analyze` bersih, 31/31 test hijau, 3 screenshot uji manual.
+> Rincian AI Challenge (review AI, 3 temuan, keputusan per file) ada di [`ai-challenge.md`](ai-challenge.md). README **belum dikerjakan**.
 
 ---
 

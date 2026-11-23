@@ -1,0 +1,14 @@
+=== 1. flutter analyze ===
+Analyzing campus_notify...                                      
+No issues found! (ran in 4.8s)
+
+=== 2. dart format --set-exit-if-changed . ===
+exit=0
+Formatted 51 files (0 changed) in 0.22 seconds.
+
+=== 3. flutter test (seluruh suite) ===
+00:01 +29: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/empty_state_widget_test.dart: EmptyAnnouncementState query berisi spasi saja diperlakukan seperti kosong
+00:02 +30: D:/Repository/my_first_app/244107020099-mobile-course/09-week-9-ai-assisted-development/campus_notify/test/widget_test.dart: announcement page renders the selected announcement
+00:03 +31: All tests passed!
+
+=== 4. Jumlah baris file yang terlibat ===
