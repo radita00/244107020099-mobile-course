@@ -1,8 +1,8 @@
 # AI Log — Week 9: AI-Assisted Development
 
-> **Status pengerjaan:** Praktikum 1 (Prompt & Context Engineering) ✅ selesai.
-> Praktikum 2 (Generate & Verifikasi) ✅ selesai — 3 bug AI ditemukan & diperbaiki, `flutter analyze` bersih, 24/24 test hijau.
-> Praktikum 3 (Debug & Refactor), AI Challenge, README, dan screenshots **belum dikerjakan**.
+> **Status pengerjaan:** Praktikum 1 (Prompt & Context Engineering) ✅ · Praktikum 2 (Generate & Verifikasi) ✅ · Praktikum 3 (Debug & Refactor) ✅
+> Hasil: 3 bug AI ditemukan & diperbaiki, `home_page.dart` 226 → 145 baris (semua method < 40 baris), `flutter analyze` bersih, 24/24 test hijau, 3 screenshot uji manual.
+> AI Challenge dan README **belum dikerjakan**.
 
 ---
 
@@ -287,7 +287,7 @@ return items.where((item) => item.title.contains(keyword)).toList();
 | 3 | Cek API nyata (autocomplete + source package) | ❌ 2 API tidak ada → lihat §2.4 & §2.5 |
 | 4 | `flutter analyze` sampai nol warning | ❌ 2 error dulu → ✅ `No issues found!` |
 | 5 | Minimal 1 test sukses + 1 test gagal | ✅ 4 test; 2 merah dulu → hijau |
-| 6 | Uji manual 3 query (kosong / cocok / tak cocok) | ⏳ **belum** — butuh emulator, jadi tugas manual |
+| 6 | Uji manual 3 query (kosong / cocok / tak cocok) | ✅ 3 screenshot di `screenshots/` → lihat §3.2 |
 
 ## 2.4 Halusinasi #1 — `StateProvider` (method fiktif untuk versi ini)
 
@@ -425,8 +425,127 @@ Test baru: `test/search_announcements_test.dart` (4 test — query kosong, query
 - [x] Langkah 3 — API dicek ke source package `riverpod-3.4.3`, bukan tebakan
 - [x] Langkah 4 — `flutter analyze` nol warning
 - [x] Langkah 5 — 4 test (sukses + gagal + case-insensitive + tanpa hasil)
-- [ ] Langkah 6 — uji manual 3 query + screenshot ⏳ **butuh emulator (tugas manual)**
+- [x] Langkah 6 — uji manual 3 query + screenshot ✅ (`screenshots/search-kosong.jpg`, `search-cocok.jpg`, `search-tidak-cocok.jpg`)
 - [x] Minimal 1 bug/halusinasi AI ditemukan **dengan bukti** → ditemukan **3**
 - [x] Output awal AI & output error disimpan verbatim di `docs/evidence/`
 
-**Belum dikerjakan (menunggu perintah):** Praktikum 3 (debug + refactor), AI Challenge, README, screenshots.
+**Belum dikerjakan (menunggu perintah):** AI Challenge, README.
+
+---
+
+# Praktikum 3 — Debug dan Refactor
+
+## 3.1 Debug dengan test merah (5 langkah)
+
+Debug yang diminta jobsheet sudah dijalankan saat Praktikum 2, bukan setelahnya. Urutannya sengaja dibalik: **test merah dulu, perbaikan belakangan**.
+
+| # | Langkah jobsheet | Yang dilakukan | Bukti |
+|---|---|---|---|
+| 1 | **Reproduksi** — langkah + input pemicu bug | `flutter analyze` menunjuk lokasi persis: `announcements_providers.dart:54:29` (`StateProvider`) dan `:60:55` (`.notifier`). Untuk bug logika: input `beasiswa` pada judul `Beasiswa Unggulan 2026` | `evidence/01-analyze-v1.txt` |
+| 2 | **Isolasi** — pindah filter ke use case murni | Aturan pencarian dipindah ke `SearchAnnouncements` (tanpa Flutter/Dio/SQLite) sehingga bisa diuji tanpa widget | `domain/usecases/search_announcements.dart` |
+| 3 | **Test merah** — buat test gagal pembukti bug | 4 test ditulis **sebelum** perbaikan; 2 di antaranya merah | `evidence/03-test-gagal.txt` |
+| 4 | **Perbaiki kecil**, jalankan test + analyze | Hanya 2 baris berubah (`toLowerCase()` di query dan di `title`) + 2 API diganti | `evidence/02`, `evidence/04`, `evidence/05` |
+| 5 | **Catat akar masalah** | Ditulis di §2.4–§2.6 dokumen ini | §2.4, §2.5, §2.6 |
+
+**Tidak ada prompt `"fix dong"`.** Setiap perbaikan punya pemicu tertulis: pesan error compiler atau test merah.
+
+## 3.2 Uji manual 3 query + screenshot
+
+Dijalankan di HP Android fisik (bukan emulator), mode `flutter run` (banner DEBUG terlihat).
+
+| Kondisi | Input | Hasil yang terlihat | File |
+|---|---|---|---|
+| Query kosong | *(kosong)* | 4 pengumuman: Pengumuman perkuliahan, Pengumuman ujian, Jadwal kuliah berubah, Pendaftaran seminar dibuka | `screenshots/search-kosong.jpg` |
+| Query cocok | `ujian` | 1 hasil: **Pengumuman ujian** | `screenshots/search-cocok.jpg` |
+| Query tak cocok | `zzz` | Ikon `search_off` + teks **Tidak ada pengumuman yang cocok dengan "zzz"** | `screenshots/search-tidak-cocok.jpg` |
+
+Ketiga screenshot diperiksa ulang satu per satu (bukan diasumsikan): isi kotak search, jumlah item, dan teks empty state sesuai harapan.
+
+## 3.3 Refactor ke layer yang benar
+
+Target jobsheet:
+
+```
+widget (UI saja) -> notifier (state saja) -> use case (aturan filter/search) -> repository (SQLite/Dio)
+```
+
+### Sebelum vs sesudah
+
+| File | Sebelum | Sesudah |
+|---|---|---|
+| `pages/home_page.dart` | **226 baris**, `build()` **141 baris** | **145 baris**, `build()` **25 baris** |
+| `widgets/search_field.dart` | menyatu di `home_page.dart` | **44 baris** |
+| `widgets/announcement_list.dart` | menyatu di `home_page.dart` | **65 baris** |
+| `widgets/empty_announcement_state.dart` | menyatu di `home_page.dart` | **40 baris** |
+| `widgets/push_status_panel.dart` | menyatu di `home_page.dart` | **42 baris** |
+
+### Panjang tiap method di `home_page.dart` (batas 40 baris)
+
+| Method | Baris |
+|---|---|
+| `initState()` | 4 |
+| `dispose()` | 4 |
+| `_initPush()` | 36 |
+| `_info()` | 4 |
+| `_logout()` | 4 |
+| `_sendTestNotification()` | 9 |
+| `_buildAppBar()` | 17 |
+| `build()` | 25 |
+
+Semua di bawah 40 ✅
+
+### Pembagian tanggung jawab per layer
+
+| Layer | File | Tanggung jawab |
+|---|---|---|
+| **widget (UI saja)** | `widgets/search_field.dart` | Render kotak pencarian; kirim input ke notifier |
+| | `widgets/announcement_list.dart` | Render loading/error/data; tidak tahu dari mana data datang |
+| | `widgets/empty_announcement_state.dart` | Bedakan "data kosong" vs "filter tak cocok" |
+| | `widgets/push_status_panel.dart` | Render status FCM; aksi lewat callback, bukan service langsung |
+| **notifier (state saja)** | `SearchQuery extends Notifier<String>` | Simpan query + `setQuery()` / `clear()` |
+| **use case (aturan search)** | `SearchAnnouncements` | Trim, `toLowerCase()`, filter `title.contains()` |
+| **repository (data)** | `AnnouncementRepositoryImpl` | Sumber data pengumuman |
+
+### Bukti tidak ada akses data dari widget
+
+```
+grep -rn "data/repositories|package:sqflite|package:dio" \
+  lib/features/announcements/presentation/pages \
+  lib/features/announcements/presentation/widgets
+→ [jumlah: 0]
+```
+
+## 3.4 Verifikasi akhir
+
+| Perintah (persis jobsheet) | Hasil | Bukti |
+|---|---|---|
+| `flutter analyze` | `No issues found! (ran in 51.7s)` | `evidence/08-praktikum3-verifikasi.txt` |
+| `dart format --set-exit-if-changed .` | `Formatted 48 files (0 changed)` — exit `0` | idem |
+| `flutter test` | `+24: All tests passed!` | idem |
+
+### Catatan masalah saat verifikasi
+
+`dart format --set-exit-if-changed .` awalnya **crash**:
+
+```
+PathNotFoundException: Directory listing failed, path = '.\build\app\intermediates\
+desugar_graph\debug\dexBuilderDebug\out\currentProject\jar_..._bucket_0\*'
+```
+
+Penyebab: folder `build/` sisa Gradle (hasil `flutter run`) berisi path yang sudah tidak valid di Windows, dan `dart format .` menelusuri **seluruh** direktori tanpa menghiraukan `.gitignore`. Ini bukan masalah kode.
+
+Solusi: hapus `build/` lalu ulangi perintah → `Formatted 48 files (0 changed)`.
+
+## 3.5 Checklist Praktikum 3
+
+- [x] 5 langkah debug dijalankan berurutan (reproduksi → isolasi → test merah → perbaiki → catat)
+- [x] Tidak memakai prompt `"fix dong"`; tiap perbaikan punya bukti error/test merah
+- [x] Fungsi di atas 40 baris dipecah (`build()` 141 → 25 baris)
+- [x] Tidak ada panggilan database/repository dari widget (grep 0 hasil)
+- [x] Alur layer benar: widget → notifier → use case → repository
+- [x] `flutter analyze` bersih
+- [x] `dart format --set-exit-if-changed .` lolos (exit 0)
+- [x] `flutter test` hijau (24 test)
+- [x] Uji manual 3 query + screenshot tersimpan
+
+**Belum dikerjakan (menunggu perintah):** AI Challenge, README.
