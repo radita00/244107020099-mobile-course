@@ -168,15 +168,15 @@ grep -r "import.*data" lib/domain          # ✅ 0 violations
 ### Issues
 | # | Judul | Status |
 |---|-------|--------|
-| #2 | Audit gap Week 8: refleksi jobsheet, PR template, CI docs gate | ⏳ Pending (dibuat manual di GitHub) |
+| #3 | Audit gap Week 8: refleksi jobsheet, PR template, CI docs gate | ⚠️ Belum dibuat — opsional, tidak memblokir Week 9 |
 
 ### Pull Requests
 | # | Title | Status | Commits | Perubahan |
 |---|-------|--------|---------|-----------|
 | #1 | feat/week8-review-docs → develop | ✅ Merged | 11 | +950 / -438 |
-| #3 | fix/week8-audit-gaps → develop | ⏳ Pending | 3 | +254 / -81 |
+| #2 | fix/week8-audit-gaps → develop | ✅ Merged | 3 | +260 / -85 |
 
-> **Catatan:** baris ⏳ diubah menjadi ✅ setelah Issue dibuat dan PR di-merge. Nomor `#2` dan `#3` adalah nomor urut berikutnya di repo ini; sesuaikan bila berbeda.
+> **Catatan nomor:** PR memakai urutan nomor yang sama dengan Issue. PR #2 sudah terpakai untuk gap audit, jadi Issue baru akan bernomor **#3**. Issue tidak wajib untuk Week 9.
 
 ### Backlog (dari self review)
 | Item | Sumber | Target |
@@ -292,7 +292,8 @@ flutter run
   - **Refleksi 4 pertanyaan jobsheet + 3 refleksi tambahan**
 - [x] `docs/ai-review-vs-keputusan.md` (prompt, 5 temuan AI, tabel keputusan)
 - [x] PR #1 merged via feature branch workflow (11 commits)
-- [ ] Issue #2 dibuat di GitHub dan ditutup oleh PR #3 (`Closes #2`)
+- [x] PR #2 merged (gap audit: refleksi, PR template root, CI docs gate)
+- [ ] Issue dibuat di GitHub (nomor berikutnya #3) — opsional, tidak memblokir Week 9
 - [x] Branch `fix/week8-audit-gaps` berisi 3 commit perbaikan gap audit
 - [x] Screenshots PR merged + CI passed
 - [x] `.github/PULL_REQUEST_TEMPLATE.md` di root repo (aktif untuk semua PR)
