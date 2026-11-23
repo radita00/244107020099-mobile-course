@@ -15,6 +15,7 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+  final TextEditingController _searchController = TextEditingController();
   String? _token;
   String _status = 'Menunggu izin notifikasi...';
 
@@ -22,6 +23,12 @@ class _HomePageState extends ConsumerState<HomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) => _initPush());
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
   }
 
   Future<void> _initPush() async {
@@ -77,7 +84,8 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     final pushService = ref.read(pushServiceProvider);
-    final announcementsState = ref.watch(announcementsProvider);
+    final announcementsState = ref.watch(filteredAnnouncementsProvider);
+    final query = ref.watch(searchQueryProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -98,12 +106,37 @@ class _HomePageState extends ConsumerState<HomePage> {
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Text(
               'Daftar Pengumuman',
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: TextField(
+              controller: _searchController,
+              onChanged: (value) =>
+                  ref.read(searchQueryProvider.notifier).setQuery(value),
+              decoration: InputDecoration(
+                hintText: 'Cari judul pengumuman...',
+                prefixIcon: const Icon(Icons.search),
+                border: const OutlineInputBorder(),
+                isDense: true,
+                suffixIcon: query.isEmpty
+                    ? null
+                    : IconButton(
+                        tooltip: 'Hapus pencarian',
+                        icon: const Icon(Icons.close),
+                        onPressed: () {
+                          _searchController.clear();
+                          ref.read(searchQueryProvider.notifier).clear();
+                        },
+                      ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
           announcementsState.when(
             loading: () => const Center(
               child: Padding(
@@ -122,9 +155,27 @@ class _HomePageState extends ConsumerState<HomePage> {
             ),
             data: (items) {
               if (items.isEmpty) {
-                return const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Center(child: Text('Belum ada pengumuman.')),
+                final trimmed = query.trim();
+                return Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Icon(
+                          trimmed.isEmpty ? Icons.inbox : Icons.search_off,
+                          size: 40,
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          trimmed.isEmpty
+                              ? 'Belum ada pengumuman.'
+                              : 'Tidak ada pengumuman yang cocok dengan "$trimmed"',
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               }
               return Column(
