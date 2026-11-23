@@ -1,0 +1,6 @@
+Analyzing campus_notify...                                      
+
+  error - The function 'StateProvider' isn't defined. Try importing the library that defines 'StateProvider', correcting the name to the name of an existing function, or defining a function named 'StateProvider' - lib\features\announcements\presentation\providers\announcements_providers.dart:54:29 - undefined_function
+  error - The getter 'notifier' isn't defined for the type 'FutureProvider<List<Announcement>>'. Try importing the library that defines 'notifier', correcting the name to the name of an existing getter, or defining a getter or field named 'notifier' - lib\features\announcements\presentation\providers\announcements_providers.dart:60:55 - undefined_getter
+
+2 issues found. (ran in 9.8s)

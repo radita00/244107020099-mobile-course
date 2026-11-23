@@ -1,0 +1,17 @@
+=== 1. PRESENTATION steril dari akses data mentah (harus 0) ===
+[jumlah: 0 baris]
+
+=== 2. DOMAIN steril dari framework & package (harus 0) ===
+[jumlah: 0 baris]
+
+=== 3. Import di file search baru ===
+1:import '../entities/announcement.dart';
+
+=== 4. Import di providers yang diubah ===
+1:import 'package:flutter_riverpod/flutter_riverpod.dart';
+3:import '../../data/repositories/announcement_repository_impl.dart';
+4:import '../../domain/entities/announcement.dart';
+5:import '../../domain/repositories/announcement_repository.dart';
+6:import '../../domain/usecases/get_announcement_detail.dart';
+7:import '../../domain/usecases/get_announcements.dart';
+8:import '../../domain/usecases/search_announcements.dart';
